@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Play vs Bot | Analytical Sanctuary</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary": "#bcc7dd",
+              "surface-bright": "#3b3936",
+              "on-secondary-container": "#3e2400",
+              "surface-container-high": "#2c2a27",
+              "surface-tint": "#96d5a0",
+              "on-primary-container": "#fdfff8",
+              "surface-container-highest": "#373432",
+              "secondary-container": "#c68222",
+              "surface-dim": "#151311",
+              "primary-fixed": "#b1f2ba",
+              "surface": "#151311",
+              "primary-fixed-dim": "#96d5a0",
+              "inverse-surface": "#e7e1de",
+              "tertiary-fixed-dim": "#bcc7dd",
+              "error": "#ffb4ab",
+              "background": "#151311",
+              "surface-container": "#211f1d",
+              "on-secondary-fixed": "#2b1700",
+              "on-tertiary-container": "#fffeff",
+              "on-secondary-fixed-variant": "#663e00",
+              "secondary-fixed": "#ffddb9",
+              "on-tertiary": "#263142",
+              "surface-container-low": "#1d1b19",
+              "on-error-container": "#ffdad6",
+              "outline": "#8a9389",
+              "surface-variant": "#373432",
+              "on-primary": "#003918",
+              "outline-variant": "#414940",
+              "on-surface": "#e7e1de",
+              "secondary-fixed-dim": "#ffb962",
+              "inverse-on-surface": "#32302e",
+              "on-background": "#e7e1de",
+              "tertiary-fixed": "#d8e3fa",
+              "primary": "#96d5a0",
+              "on-primary-fixed-variant": "#125129",
+              "error-container": "#93000a",
+              "on-error": "#690005",
+              "on-primary-fixed": "#00210b",
+              "on-tertiary-fixed-variant": "#3c475a",
+              "on-secondary": "#472a00",
+              "on-surface-variant": "#c0c9be",
+              "primary-container": "#468254",
+              "on-tertiary-fixed": "#111c2c",
+              "inverse-primary": "#2e6a3f",
+              "secondary": "#ffb962",
+              "surface-container-lowest": "#0f0e0c",
+              "tertiary-container": "#6b768a"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(55, 52, 50, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .cta-gradient {
+            background: linear-gradient(135deg, #96d5a0 0%, #468254 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+    #board {
+        width: 100%;
+        max-width: 600px;
+    }
+    .cg-board-wrap {
+        width: 100% !important;
+        height: auto !important;
+        padding-bottom: 100% !important;
+        position: relative !important;
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 w-full z-50 bg-[#151311] dark:bg-[#151311] flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest">
+<img alt="user profile picture" class="w-full h-full object-cover" data-alt="close-up portrait of a professional chess player with a neutral expression and focused eyes in a studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5v68LwmytEWXSvfwYxXbnY8lPvNPdt8Z-Rl4NvGqZ6vXXYJ-Nt74eUIWccw7RJ1NXNZc3OP3ZZGl_Q0PxC9k6l4SltmhqkGxTJ3f22X-rk5VgAqU6IeBLK5AIqeIsdZd6K3hUml1XdrnYyY871He6uVcU4Vu_4Hdt8h5Dij5V09C4_TK4zuFVOtbCtNBexvG7tTKF7r5u6Mo8cZe62eDErTu9kwUlPAN95H4gaDyt6Mm9L0RIlXA-FkhZib591XUF27vVwqgJ_kFt"/>
+</div>
+<h1 class="font-headline tracking-wider uppercase text-sm font-bold text-[#96d5a0]">Analytical Sanctuary</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-8 text-[#c0c9be] font-label text-sm font-medium">
+<a class="hover:text-[#96d5a0] transition-colors" href="index.html">Home</a>
+<a class="hover:text-[#96d5a0] transition-colors" href="practice.html">Practice</a>
+<a class="text-[#96d5a0]" href="play_vs_bot.html">Play</a>
+<a class="hover:text-[#96d5a0] transition-colors" href="leaderboard.html">Ranks</a>
+</div>
+<span class="text-[#96d5a0] font-headline font-bold tracking-[0.02em] text-sm">1850 ELO</span>
+</div>
+</header>
+<main class="pt-24 pb-32 px-4 md:px-8 max-w-7xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+<!-- Left Column: Settings & Analysis -->
+<div class="lg:col-span-4 order-2 lg:order-1 flex flex-col gap-8">
+<!-- Difficulty Selector -->
+<section class="bg-surface-container-low p-6 rounded-xl">
+<h2 class="font-headline text-xs font-bold tracking-widest uppercase text-outline mb-4">Level Selection</h2>
+<div class="flex flex-col gap-2">
+<div class="grid grid-cols-2 gap-2">
+<button class="bg-surface-container-highest text-on-surface-variant py-3 rounded-lg text-sm font-medium hover:bg-surface-bright transition-colors">Beginner</button>
+<button class="bg-surface-container-highest text-on-surface-variant py-3 rounded-lg text-sm font-medium hover:bg-surface-bright transition-colors">Intermediate</button>
+<button class="cta-gradient text-on-primary-fixed py-3 rounded-lg text-sm font-bold shadow-lg">Advanced</button>
+<button class="bg-surface-container-highest text-on-surface-variant py-3 rounded-lg text-sm font-medium hover:bg-surface-bright transition-colors">Expert</button>
+</div>
+</div>
+</section>
+<!-- Engine Status / Accuracy -->
+<section class="bg-surface-container-low p-6 rounded-xl overflow-hidden relative">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-6xl">insights</span>
+</div>
+<h2 class="font-headline text-xs font-bold tracking-widest uppercase text-outline mb-6">Real-time Analysis</h2>
+<div class="flex items-end gap-4 mb-8">
+<div class="flex-1 h-32 bg-surface-container rounded-lg relative overflow-hidden flex items-end">
+<div class="w-full bg-primary/20 h-3/4 rounded-t-sm"></div>
+<div class="absolute inset-0 flex flex-col justify-center items-center">
+<span class="text-3xl font-headline font-bold text-primary">84.2%</span>
+<span class="text-[10px] uppercase tracking-tighter text-outline">Accuracy</span>
+</div>
+</div>
+<div class="flex-1 h-32 bg-surface-container rounded-lg relative overflow-hidden flex items-end">
+<div class="w-full bg-error/10 h-1/4 rounded-t-sm"></div>
+<div class="absolute inset-0 flex flex-col justify-center items-center">
+<span class="text-3xl font-headline font-bold text-on-surface">+1.4</span>
+<span class="text-[10px] uppercase tracking-tighter text-outline">Eval</span>
+</div>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="flex-1 bg-surface-container-high hover:bg-surface-bright text-primary py-3 rounded-lg flex items-center justify-center gap-2 transition-all active:scale-95">
+<span class="material-symbols-outlined text-lg">undo</span>
+<span class="text-xs font-bold">Undo (2)</span>
+</button>
+<button class="flex-1 bg-surface-container-high hover:bg-surface-bright text-primary py-3 rounded-lg flex items-center justify-center gap-2 transition-all active:scale-95">
+<span class="material-symbols-outlined text-lg" data-weight="fill" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+<span class="text-xs font-bold">Hint (1)</span>
+</button>
+</div>
+</section>
+</div>
+<!-- Right Column: The Board -->
+<div class="lg:col-span-8 order-1 lg:order-2 flex flex-col gap-6">
+<!-- Opponent Profile & Clock -->
+<div class="flex justify-between items-center bg-surface-container-low px-6 py-4 rounded-xl">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center border border-outline-variant/20">
+<span class="material-symbols-outlined text-primary text-2xl">smart_toy</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline font-bold text-sm">DeepThink v4.2</h3>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-[9px] font-bold text-outline">BOT</span>
+</div>
+<p class="text-[10px] text-outline tracking-wider">Estimated 2200 ELO</p>
+</div>
+</div>
+<div class="bg-surface-container-highest px-6 py-2 rounded-lg flex items-center gap-3">
+<span class="material-symbols-outlined text-outline text-lg">timer</span>
+<span class="font-headline text-2xl font-medium tracking-tighter text-on-surface">05:00</span>
+</div>
+</div>
+<!-- Chessboard Shell -->
+<div class="relative group w-full max-w-[600px] mx-auto">
+<div class="absolute -inset-1 bg-gradient-to-tr from-primary/10 to-transparent blur-2xl opacity-30 group-hover:opacity-50 transition-opacity"></div>
+<div class="relative bg-surface-container-low p-2 md:p-4 rounded-xl shadow-2xl overflow-hidden w-full">
+<div id="board" class="w-full h-auto aspect-square mx-auto"></div>
+</div>
+</div>
+<!-- User Profile & Clock -->
+<div class="flex justify-between items-center bg-surface-container-low px-6 py-4 rounded-xl">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg overflow-hidden border border-primary/20">
+<img alt="user profile picture" class="w-full h-full object-cover" data-alt="professional modern studio lighting of a high stakes competitor in dark environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkXLDLV7xVYB3zVH8QLIff3gnkzR3MHWSaq21KtkIvyWxFuhhohJsA9vixX-QpAtcxs_jgzE8BmPW7xuaSvgO7jz4Hy4XO3bjqnaHaasbnqeOdG1Bz7sYKiefLJ8vbGZM6reX69xNvw_zMomByeulmsB7VH5ftEZVMwFWmeECBegnJZYbWfnze4a39A7RHU4zrT5RKWuR7rVRvuHQ7ViBoo0dn-JP8n88SuDIgLLelgRXA3ukyv3alXv_fDPrWL6GIRsrtmDZDv4sS"/>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline font-bold text-sm">Grandmaster Felix</h3>
+<span class="px-1.5 py-0.5 rounded bg-primary/10 text-[9px] font-bold text-primary">PRO</span>
+</div>
+<p class="text-[10px] text-outline tracking-wider">1850 Rating</p>
+</div>
+</div>
+<div class="bg-primary px-6 py-2 rounded-lg flex items-center gap-3 shadow-[0_0_20px_rgba(150,213,160,0.3)]">
+<span class="material-symbols-outlined text-on-primary-fixed text-lg" data-weight="fill" style="font-variation-settings: 'FILL' 1;">timer</span>
+<span class="font-headline text-2xl font-bold tracking-tighter text-on-primary-fixed">05:00</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar Shell -->
+<nav class="fixed bottom-0 left-0 w-full h-20 flex justify-around items-center px-4 pb-safe bg-[#151311] dark:bg-[#151311] z-50 rounded-t-lg shadow-[0_-10px_30px_rgba(0,0,0,0.5)] md:hidden">
+<a href="index.html" class="flex flex-col items-center justify-center text-[#c0c9be] opacity-60 px-3 py-1.5 transition-all active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-tight">Home</span>
+</a>
+<a href="practice.html" class="flex flex-col items-center justify-center text-[#c0c9be] opacity-60 px-3 py-1.5 transition-all active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-tight">Practice</span>
+</a>
+<a href="play_vs_bot.html" class="flex flex-col items-center justify-center text-[#96d5a0] bg-[#1d1b19] rounded-xl px-3 py-1.5 transition-all active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="grid_view" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-tight">Play</span>
+</a>
+<a href="leaderboard.html" class="flex flex-col items-center justify-center text-[#c0c9be] opacity-60 px-3 py-1.5 transition-all active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-tight">Ranks</span>
+</a>
+<a href="profile.html" class="flex flex-col items-center justify-center text-[#c0c9be] opacity-60 px-3 py-1.5 transition-all active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-tight">Profile</span>
+</a>
+</nav>
+<script>
+    var board = null;
+    var game = new Chess();
+
+    function evaluateBoard(game) {
+        var totalEvaluation = 0;
+        var pieceValues = { 'p': 10, 'n': 30, 'b': 30, 'r': 50, 'q': 90, 'k': 900 };
+        var fen = game.fen();
+        var position = fen.split(' ')[0];
+        
+        for (var i = 0; i < position.length; i++) {
+            var char = position[i];
+            if (pieceValues[char.toLowerCase()]) {
+                var value = pieceValues[char.toLowerCase()];
+                if (char === char.toUpperCase()) {
+                    totalEvaluation += value; // White
+                } else {
+                    totalEvaluation -= value; // Black
+                }
+            }
+        }
+        return totalEvaluation;
+    }
+
+    function minimax(game, depth, alpha, beta, isMaximizingPlayer) {
+        if (depth === 0 || game.game_over()) {
+            return evaluateBoard(game);
+        }
+
+        var newGameMoves = game.moves();
+
+        if (isMaximizingPlayer) {
+            var bestVal = -9999;
+            for (var i = 0; i < newGameMoves.length; i++) {
+                game.move(newGameMoves[i]);
+                bestVal = Math.max(bestVal, minimax(game, depth - 1, alpha, beta, !isMaximizingPlayer));
+                game.undo();
+                alpha = Math.max(alpha, bestVal);
+                if (beta <= alpha) {
+                    break;
+                }
+            }
+            return bestVal;
+        } else {
+            var bestVal = 9999;
+            for (var i = 0; i < newGameMoves.length; i++) {
+                game.move(newGameMoves[i]);
+                bestVal = Math.min(bestVal, minimax(game, depth - 1, alpha, beta, !isMaximizingPlayer));
+                game.undo();
+                beta = Math.min(beta, bestVal);
+                if (beta <= alpha) {
+                    break;
+                }
+            }
+            return bestVal;
+        }
+    }
+
+    function makeBestMove() {
+        var possibleMoves = game.moves();
+        if (possibleMoves.length === 0) return;
+        
+        var bestMove = null;
+        var bestValue = 9999; // Bot plays black (minimizing)
+
+        // Simple sorting for basic move ordering (captures first) to speed up alpha-beta
+        possibleMoves.sort(function(a, b) {
+            return a.includes('x') ? -1 : 1;
+        });
+
+        var depth = 2; // Reduced depth so it's responsive
+
+        for (var i = 0; i < possibleMoves.length; i++) {
+            var move = possibleMoves[i];
+            game.move(move);
+            
+            // Check for instant checkmate
+            if (game.in_checkmate()) {
+                bestMove = move;
+                game.undo();
+                break;
+            }
+
+            var boardValue = minimax(game, depth - 1, -10000, 10000, true);
+            game.undo();
+
+            if (boardValue < bestValue) {
+                bestValue = boardValue;
+                bestMove = move;
+            }
+        }
+
+        // Fallback to random if no best move found somehow
+        if (!bestMove) {
+            var randomIdx = Math.floor(Math.random() * possibleMoves.length);
+            bestMove = possibleMoves[randomIdx];
+        }
+
+        game.move(bestMove);
+        board.position(game.fen());
+    }
+
+    function onDragStart(source, piece, position, orientation) {
+        if (game.game_over()) return false;
+        if (piece.search(/^b/) !== -1) return false; // Only allow white pieces
+    }
+
+    function onDrop(source, target) {
+        var move = game.move({
+            from: source,
+            to: target,
+            promotion: 'q' // NOTE: always promote to a queen for example simplicity
+        });
+
+        if (move === null) return 'snapback';
+        
+        // Timeout to allow board to visually update before bot calculates
+        window.setTimeout(makeBestMove, 250);
+    }
+
+    function onSnapEnd () {
+        board.position(game.fen());
+    }
+
+    var config = {
+        draggable: true,
+        position: 'start',
+        onDragStart: onDragStart,
+        onDrop: onDrop,
+        onSnapEnd: onSnapEnd,
+        pieceTheme: 'https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png'
+    };
+    board = Chessboard('board', config);
+    $(window).resize(board.resize);
+</script>
+</body></html>

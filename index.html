@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary": "#bcc7dd",
+                        "surface-bright": "#3b3936",
+                        "on-secondary-container": "#3e2400",
+                        "surface-container-high": "#2c2a27",
+                        "surface-tint": "#96d5a0",
+                        "on-primary-container": "#fdfff8",
+                        "surface-container-highest": "#373432",
+                        "secondary-container": "#c68222",
+                        "surface-dim": "#151311",
+                        "primary-fixed": "#b1f2ba",
+                        "surface": "#151311",
+                        "primary-fixed-dim": "#96d5a0",
+                        "inverse-surface": "#e7e1de",
+                        "tertiary-fixed-dim": "#bcc7dd",
+                        "error": "#ffb4ab",
+                        "background": "#151311",
+                        "surface-container": "#211f1d",
+                        "on-secondary-fixed": "#2b1700",
+                        "on-tertiary-container": "#fffeff",
+                        "on-secondary-fixed-variant": "#663e00",
+                        "secondary-fixed": "#ffddb9",
+                        "on-tertiary": "#263142",
+                        "surface-container-low": "#1d1b19",
+                        "on-error-container": "#ffdad6",
+                        "outline": "#8a9389",
+                        "surface-variant": "#373432",
+                        "on-primary": "#003918",
+                        "outline-variant": "#414940",
+                        "on-surface": "#e7e1de",
+                        "secondary-fixed-dim": "#ffb962",
+                        "inverse-on-surface": "#32302e",
+                        "on-background": "#e7e1de",
+                        "tertiary-fixed": "#d8e3fa",
+                        "primary": "#96d5a0",
+                        "on-primary-fixed-variant": "#125129",
+                        "error-container": "#93000a",
+                        "on-error": "#690005",
+                        "on-primary-fixed": "#00210b",
+                        "on-tertiary-fixed-variant": "#3c475a",
+                        "on-secondary": "#472a00",
+                        "on-surface-variant": "#c0c9be",
+                        "primary-container": "#468254",
+                        "on-tertiary-fixed": "#111c2c",
+                        "inverse-primary": "#2e6a3f",
+                        "secondary": "#ffb962",
+                        "surface-container-lowest": "#0f0e0c",
+                        "tertiary-container": "#6b768a"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #151311;
+            color: #e7e1de;
+            font-family: 'Manrope', sans-serif;
+        }
+        .chess-gradient-btn {
+            background: linear-gradient(135deg, #96d5a0 0%, #468254 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#151311] dark:bg-[#151311] flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="close-up portrait of a professional chess player in a dimly lit studio with dramatic rim lighting and emerald accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-UF3VaFE9afZnuJKfIO5oH-5JL2biEW8wf4tEl81jiYKsKgzYGWXUMY32_-mycBqXFkK8aBbEGK5dsRawgb9wIV39fyZUYIZNvHCG08m9vFaSmiZl1naCsOu9tA_wtOD-OzE_ZAt5brXEVH3yPMcIwCdpfrGY4xD4AIU3sm2YK9_PlifBisbjz9qezoQScQsEIFT56UmuYqqn5Qy3w1adSS516lEI2Jw6mR0mVYEkwE0YfVKab94F78nQHSJgfKCbvfC1iXGAsgL6"/>
+</div>
+<h1 class="font-['Space_Grotesk'] tracking-wider uppercase text-sm font-bold text-[#96d5a0]">Analytical Sanctuary</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-['Space_Grotesk'] tracking-[0.02em] text-[#96d5a0] text-xl font-bold">1850 ELO</span>
+</div>
+</header>
+<main class="pt-24 px-6 max-w-5xl mx-auto space-y-10">
+<!-- Hero Stats & Primary Action -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- User Stats Card -->
+<div class="lg:col-span-2 bg-surface-container-low rounded-xl p-8 flex flex-col justify-between relative overflow-hidden">
+<div class="relative z-10">
+<span class="font-headline text-[10px] uppercase tracking-[0.2em] text-outline mb-2 block">DASHBOARD OVERVIEW</span>
+<h2 class="font-headline text-3xl font-bold mb-8">Grandmaster Path</h2>
+<div class="grid grid-cols-3 gap-4">
+<div class="space-y-1">
+<p class="text-on-surface-variant text-sm font-medium">Rating</p>
+<p class="text-3xl font-headline font-bold text-primary">1842</p>
+</div>
+<div class="space-y-1">
+<p class="text-on-surface-variant text-sm font-medium">Streak</p>
+<p class="text-3xl font-headline font-bold text-secondary">12 Days</p>
+</div>
+<div class="space-y-1">
+<p class="text-on-surface-variant text-sm font-medium">Puzzles</p>
+<p class="text-3xl font-headline font-bold text-tertiary">450</p>
+</div>
+</div>
+</div>
+<!-- Abstract BG Shape -->
+<div class="absolute -right-12 -bottom-12 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+</div>
+<!-- Primary Action Button Card -->
+<div class="bg-surface-container-high rounded-xl p-6 flex flex-col items-center justify-center text-center space-y-4 hover:bg-surface-container-highest transition-colors cursor-pointer group">
+<div class="w-16 h-16 bg-surface-container-low rounded-full flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="smart_toy">smart_toy</span>
+</div>
+<h3 class="font-headline text-xl font-bold">Refine Tactics</h3>
+<p class="text-on-surface-variant text-sm px-4">Challenge the Neural Engine in a deep-theory match.</p>
+<button class="chess-gradient-btn w-full py-4 rounded-xl text-on-primary-fixed font-bold tracking-wide active:scale-95 transition-transform">
+                    Play vs Bot
+                </button>
+</div>
+</section>
+<!-- Daily Challenge & Leaderboard -->
+<section class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+<!-- Daily Challenge Card -->
+<div class="lg:col-span-3 bg-surface-container-low rounded-xl overflow-hidden group">
+<div class="h-48 relative">
+<img alt="Daily Challenge" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" data-alt="dramatic macro shot of dark wooden chess pieces on a board with soft focused emerald green lighting and professional bokeh" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8OwVRK40FH-vxaV57uxMScmnatWGXalGL4mEt5i4dDzahDy62v4KEBqtTaL8cXWLrkJCG5wfRkWtjsOD09d12iK6gh_mG3gsJwHvQqpNpshRB4W0G5Jat7tKYd2zOdjQkN8BWi4rnPGtD-c153sseIa4LyKhz4GpJq__VbXMUZfovBototnA590VC_R1eqDjntiu6y-nJIzeGezcY0GxS46SEXCAc8fUzi8VZ7HyUN5je5L9ZztUekL8hX2CA9kSo-n1w8BvILRfh"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-transparent to-transparent"></div>
+<div class="absolute bottom-6 left-8">
+<span class="bg-secondary-container/20 text-secondary px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase mb-2 inline-block">DAILY FOCUS</span>
+<h3 class="font-headline text-2xl font-bold">Master the Caro-Kann</h3>
+</div>
+</div>
+<div class="p-8 flex justify-between items-center">
+<p class="text-on-surface-variant text-sm max-w-[60%]">Analyze the pawn structure and optimal knight development in the Advance Variation.</p>
+<button class="bg-surface-container-highest text-primary font-bold px-6 py-3 rounded-lg hover:bg-surface-bright transition-colors active:scale-95">
+                        Solve Now
+                    </button>
+</div>
+</div>
+<!-- Leaderboard Mini-List -->
+<div class="lg:col-span-2 space-y-6">
+<div class="flex justify-between items-end">
+<h3 class="font-headline text-lg font-bold">Top Strategists</h3>
+<span class="text-primary text-xs font-bold tracking-wider cursor-pointer hover:underline uppercase">View All</span>
+</div>
+<div class="bg-surface-container-low rounded-xl p-2 space-y-1">
+<div class="flex items-center justify-between p-4 rounded-lg bg-surface-container-high transition-all">
+<div class="flex items-center gap-4">
+<span class="font-headline font-bold text-primary w-4">1</span>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center font-bold text-tertiary">JD</div>
+<div>
+<p class="text-sm font-bold">Julian_Dax</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Candidate Master</p>
+</div>
+</div>
+<span class="font-headline font-bold text-on-surface">2140</span>
+</div>
+<div class="flex items-center justify-between p-4 rounded-lg hover:bg-surface-container-high transition-all">
+<div class="flex items-center gap-4">
+<span class="font-headline font-bold text-outline w-4">2</span>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center font-bold text-tertiary">SR</div>
+<div>
+<p class="text-sm font-bold">S_Raina</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Expert</p>
+</div>
+</div>
+<span class="font-headline font-bold text-on-surface">1925</span>
+</div>
+<div class="flex items-center justify-between p-4 rounded-lg hover:bg-surface-container-high transition-all">
+<div class="flex items-center gap-4">
+<span class="font-headline font-bold text-outline w-4">3</span>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center font-bold text-tertiary">MK</div>
+<div>
+<p class="text-sm font-bold">M_Kaspar</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Advanced</p>
+</div>
+</div>
+<span class="font-headline font-bold text-on-surface">1890</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Practice Checkmate Grid -->
+<section class="space-y-6">
+<h3 class="font-headline text-lg font-bold">Practice Checkmate</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Mate in 1 -->
+<div class="bg-surface-container-low p-6 rounded-xl border-l-4 border-primary/40 flex flex-col justify-between h-40">
+<div>
+<h4 class="font-headline text-xl font-bold">Mate in 1</h4>
+<p class="text-xs text-on-surface-variant mt-1">Foundational Vision</p>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">
+<span>Completion</span>
+<span class="text-primary">92%</span>
+</div>
+<div class="h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full w-[92%]"></div>
+</div>
+</div>
+</div>
+<!-- Mate in 2 -->
+<div class="bg-surface-container-low p-6 rounded-xl border-l-4 border-secondary/40 flex flex-col justify-between h-40">
+<div>
+<h4 class="font-headline text-xl font-bold">Mate in 2</h4>
+<p class="text-xs text-on-surface-variant mt-1">Pattern Recognition</p>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">
+<span>Completion</span>
+<span class="text-secondary">45%</span>
+</div>
+<div class="h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full w-[45%]"></div>
+</div>
+</div>
+</div>
+<!-- Mate in 3 -->
+<div class="bg-surface-container-low p-6 rounded-xl border-l-4 border-tertiary/40 flex flex-col justify-between h-40">
+<div>
+<h4 class="font-headline text-xl font-bold">Mate in 3</h4>
+<p class="text-xs text-on-surface-variant mt-1">Calculation Depth</p>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">
+<span>Completion</span>
+<span class="text-tertiary">12%</span>
+</div>
+<div class="h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary rounded-full w-[12%]"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full h-20 bg-[#151311] dark:bg-[#151311] flex justify-around items-center px-4 pb-safe z-50 rounded-t-lg shadow-[0_-10px_30px_rgba(0,0,0,0.5)] border-t border-[#2c2a27]/15">
+<a class="flex flex-col items-center justify-center text-[#96d5a0] bg-[#1d1b19] rounded-xl px-3 py-1.5 active:scale-90 transition-transform duration-150" href="index.html">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-tight">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#c0c9be] opacity-60 px-3 py-1.5 hover:text-[#96d5a0] hover:opacity-100 transition-all active:scale-90 transition-transform duration-150" href="practice.html">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-tight">Practice</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#c0c9be] opacity-60 px-3 py-1.5 hover:text-[#96d5a0] hover:opacity-100 transition-all active:scale-90 transition-transform duration-150" href="play_vs_bot.html">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-tight">Play</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#c0c9be] opacity-60 px-3 py-1.5 hover:text-[#96d5a0] hover:opacity-100 transition-all active:scale-90 transition-transform duration-150" href="leaderboard.html">
+<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-tight">Ranks</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#c0c9be] opacity-60 px-3 py-1.5 hover:text-[#96d5a0] hover:opacity-100 transition-all active:scale-90 transition-transform duration-150" href="profile.html">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-tight">Profile</span>
+</a>
+</nav>
+</body></html>

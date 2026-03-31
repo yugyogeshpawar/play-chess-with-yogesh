@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary": "#bcc7dd",
+              "surface-bright": "#3b3936",
+              "on-secondary-container": "#3e2400",
+              "surface-container-high": "#2c2a27",
+              "surface-tint": "#96d5a0",
+              "on-primary-container": "#fdfff8",
+              "surface-container-highest": "#373432",
+              "secondary-container": "#c68222",
+              "surface-dim": "#151311",
+              "primary-fixed": "#b1f2ba",
+              "surface": "#151311",
+              "primary-fixed-dim": "#96d5a0",
+              "inverse-surface": "#e7e1de",
+              "tertiary-fixed-dim": "#bcc7dd",
+              "error": "#ffb4ab",
+              "background": "#151311",
+              "surface-container": "#211f1d",
+              "on-secondary-fixed": "#2b1700",
+              "on-tertiary-container": "#fffeff",
+              "on-secondary-fixed-variant": "#663e00",
+              "secondary-fixed": "#ffddb9",
+              "on-tertiary": "#263142",
+              "surface-container-low": "#1d1b19",
+              "on-error-container": "#ffdad6",
+              "outline": "#8a9389",
+              "surface-variant": "#373432",
+              "on-primary": "#003918",
+              "outline-variant": "#414940",
+              "on-surface": "#e7e1de",
+              "secondary-fixed-dim": "#ffb962",
+              "inverse-on-surface": "#32302e",
+              "on-background": "#e7e1de",
+              "tertiary-fixed": "#d8e3fa",
+              "primary": "#96d5a0",
+              "on-primary-fixed-variant": "#125129",
+              "error-container": "#93000a",
+              "on-error": "#690005",
+              "on-primary-fixed": "#00210b",
+              "on-tertiary-fixed-variant": "#3c475a",
+              "on-secondary": "#472a00",
+              "on-surface-variant": "#c0c9be",
+              "primary-container": "#468254",
+              "on-tertiary-fixed": "#111c2c",
+              "inverse-primary": "#2e6a3f",
+              "secondary": "#ffb962",
+              "surface-container-lowest": "#0f0e0c",
+              "tertiary-container": "#6b768a"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .primary-gradient {
+        background: linear-gradient(135deg, #96d5a0 0%, #468254 100%);
+      }
+      .glass-card {
+        background: rgba(55, 52, 50, 0.4);
+        backdrop-filter: blur(20px);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 w-full z-50 bg-[#151311] dark:bg-[#151311] flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="close-up portrait of a professional chess player with focused expression in a dimly lit tournament setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAppdNGfL4uro4hxQrtmXhXLBV__2Gqp3fj68-A1q5dq2nwn1amjBy6dXnpB8T2WIA7V2ZsYfIDakEbdEQqrQ8legcv4v0sEF4j81RX27KBtHwYet852F4wIUcVMdD01h-W3deR55CGo9y07H7rAYQmeQSc6Lt3zgbFSrvQEuzBnps2R8KKEzG_7ppE-zrsT9zJNaFwiNITZcwo0tsPsTO3Ij4gcqUKdIpHSUgkcx44UHslZjmlx_9stFY2BfvfbK9pOLWTMc5hijKy"/>
+</div>
+<h1 class="font-['Space_Grotesk'] tracking-wider uppercase text-sm font-bold text-[#96d5a0]">Analytical Sanctuary</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[#96d5a0] font-headline font-bold text-sm tracking-widest">1850 ELO</span>
+</div>
+</header>
+<main class="pt-24 pb-32 px-4 max-w-4xl mx-auto min-h-screen">
+<!-- Header Section -->
+<section class="mb-10 text-center md:text-left">
+<div class="inline-block px-3 py-1 mb-4 rounded-full bg-surface-container-high text-primary font-headline text-[10px] font-bold tracking-[0.2em] uppercase">
+                Global Rankings
+            </div>
+<h2 class="text-4xl md:text-5xl font-headline font-bold text-on-surface tracking-tight mb-2">Hall of Masters</h2>
+<p class="text-on-surface-variant font-body max-w-md">The elite echelon of strategic minds. Only the most consistent tacticians rise to the top.</p>
+</section>
+<!-- Filters & Toggles -->
+<div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-8">
+<div class="flex p-1 bg-surface-container-low rounded-xl w-full md:w-auto">
+<button class="flex-1 md:flex-none px-6 py-2 rounded-lg text-xs font-bold font-headline uppercase tracking-wider bg-surface-container-high text-primary transition-all">Daily</button>
+<button class="flex-1 md:flex-none px-6 py-2 rounded-lg text-xs font-bold font-headline uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-all">Weekly</button>
+<button class="flex-1 md:flex-none px-6 py-2 rounded-lg text-xs font-bold font-headline uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-all">All-Time</button>
+</div>
+<div class="flex items-center gap-4 bg-surface-container-low px-4 py-2 rounded-xl">
+<span class="text-xs font-bold font-headline text-on-surface-variant uppercase tracking-widest">Friends Only</span>
+<button class="w-12 h-6 bg-surface-container-highest rounded-full p-1 relative transition-colors">
+<div class="w-4 h-4 bg-outline rounded-full transition-transform translate-x-0"></div>
+</button>
+</div>
+</div>
+<!-- Podium / Top 3 -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+<!-- Rank 2 -->
+<div class="order-2 md:order-1 bg-surface-container-low p-6 rounded-xl flex flex-col items-center justify-center text-center relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-6xl">military_tech</span>
+</div>
+<div class="w-20 h-20 rounded-full border-4 border-tertiary-fixed-dim/30 p-1 mb-4">
+<img class="w-full h-full object-cover rounded-full" data-alt="portrait of a young man with glasses studying a digital tablet in a moody library setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjVZFJIS6NJ2MB8s_47rq9Y8LiQN_9jutCMzH9XGC8fJj8aBX5JOfeRiL9W6RPacTHAmWCxAwR8FT2ugUIHR1sxNvqL3ZAyjFeWCYMhtACEuw_9jxMyC9cXUsyWdxEGV0KYW0zGpqWeAlMCv9opxZppOGvLDrs1Z7ICq4yfrz_EijdIxWQ2wfasP_9y-JmOCfd4lbxB24SW1tU1CQWtR0tZofR3cbwvmsh433bUzddOovXEkS9h1j3Zp4pHTP7EhZgX608kN-cKP7-"/>
+</div>
+<span class="text-tertiary-fixed-dim font-headline font-bold text-lg mb-1">#2</span>
+<h3 class="font-headline font-bold text-on-surface mb-1">Grandmaster_V</h3>
+<span class="text-primary font-headline text-sm font-semibold tracking-widest">2842 ELO</span>
+</div>
+<!-- Rank 1 -->
+<div class="order-1 md:order-2 bg-surface-container-high p-8 rounded-xl flex flex-col items-center justify-center text-center relative overflow-hidden border-b-4 border-primary/20 scale-105 shadow-2xl">
+<div class="absolute -top-4 -right-4 bg-primary/10 rounded-full w-24 h-24 blur-3xl"></div>
+<div class="w-24 h-24 rounded-full border-4 border-primary p-1 mb-4 relative">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-on-primary-fixed px-2 py-0.5 rounded text-[10px] font-black uppercase">Champion</div>
+<img class="w-full h-full object-cover rounded-full" data-alt="high fashion editorial portrait of a woman with sharp features and analytical gaze in cold cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuA4iygsttBzZ4JN4STmJXweLYqzuFbn8t17UmWZ7zXbKJPXKYCHhUs7JWT3nvqYbDy_p_FU_rkQJDTC6dOprl4mDb4rGEpYy2Ldn-OXWU6PCJQjYihJSN3W5vQWRe43wW1-1LSljtsX2TFWg2GXRBjzJPg-e7hNR8BEO__YrtSM8QrEGBDgUt0gI8dc1ITAKziHY9gmTU82VOvhXnyW0LPkShWjds0wE-7yUjrL9LC0VlrW79wM1AkOr3RiETugdFISFziZQM6VFS"/>
+</div>
+<span class="text-primary font-headline font-bold text-2xl mb-1">#1</span>
+<h3 class="font-headline font-bold text-xl text-on-surface mb-1">DeepLogic_01</h3>
+<span class="primary-gradient text-on-primary-fixed px-4 py-1 rounded-full font-headline text-sm font-bold tracking-widest">2910 ELO</span>
+</div>
+<!-- Rank 3 -->
+<div class="order-3 md:order-3 bg-surface-container-low p-6 rounded-xl flex flex-col items-center justify-center text-center relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-6xl">military_tech</span>
+</div>
+<div class="w-20 h-20 rounded-full border-4 border-secondary-fixed-dim/30 p-1 mb-4">
+<img class="w-full h-full object-cover rounded-full" data-alt="professional headshot of an older chess grandmaster with silver hair and a thoughtful smile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJYP9LX6USb8A3Ld3p8DKcbj4WAvRAeEdGiM4PGYpGBvg817kpx4DzCExZkf2R3rJ6SCnOHsIX5-czgOOAC0eg8h3757UIPiP573kF_oucP0JIHN1frfkrFNa-UEhbG6Prp_9Esfim3_4Hw0zXaZKgCTsQTXoax69bYpkbxuRmllXXxkmkRAB6Ehz8h2MHd9-TR9K36VnW6XAC-ouaxS81i5Q555wfnBFUd1t455av0F62FQg5me-i3Fj_8VYXFtL8-E4Hs3nFrvx6"/>
+</div>
+<span class="text-secondary-fixed-dim font-headline font-bold text-lg mb-1">#3</span>
+<h3 class="font-headline font-bold text-on-surface mb-1">BlitzKing_X</h3>
+<span class="text-primary font-headline text-sm font-semibold tracking-widest">2795 ELO</span>
+</div>
+</div>
+<!-- Leaderboard List -->
+<div class="space-y-3">
+<!-- Rank Item -->
+<div class="flex items-center justify-between p-4 rounded-xl bg-surface-container-low hover:bg-surface-container-high transition-all group">
+<div class="flex items-center gap-6">
+<span class="font-headline font-bold text-on-surface-variant w-6 text-center group-hover:text-primary transition-colors">4</span>
+<div class="w-10 h-10 rounded-lg overflow-hidden grayscale group-hover:grayscale-0 transition-all">
+<img class="w-full h-full object-cover" data-alt="headshot of a chess player with modern urban aesthetic in a high contrast dark studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAV-8EJfRD_aRTj4EAW9OgX85hY9hgFacQQ5GN82f9SvqIc9zqe2YPYzHC4xIVIxxciETZUxJUJW6g2hEkERY_B1FvS8dxxqm92HJmPGhgZGmvoZtF3b_GpLJqSCDtYzdVLo9xBC1ix9C1qBPSa-tDbvGQyt2WSqji7DgS4aKU6wpZ9-MB3KK1fMmhyNerU0yiOaW0G2v14Ydu2wEzaLUU7K9jqS8kpgJYccu_EuXWOEu-5Sal5EQtEmmPmSwb-VW2UMyX-s84IF1ZQ"/>
+</div>
+<div>
+<p class="font-headline font-bold text-on-surface">PawnStar77</p>
+<p class="font-body text-[10px] uppercase tracking-tighter text-on-surface-variant">Active 2h ago</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline font-bold text-on-surface tracking-wider">2645</p>
+<div class="flex items-center gap-1 justify-end">
+<span class="material-symbols-outlined text-[10px] text-primary">arrow_drop_up</span>
+<span class="text-[10px] font-bold text-primary font-headline uppercase">3 Spots</span>
+</div>
+</div>
+</div>
+<!-- Rank Item -->
+<div class="flex items-center justify-between p-4 rounded-xl bg-surface-container-low hover:bg-surface-container-high transition-all group">
+<div class="flex items-center gap-6">
+<span class="font-headline font-bold text-on-surface-variant w-6 text-center group-hover:text-primary transition-colors">5</span>
+<div class="w-10 h-10 rounded-lg overflow-hidden grayscale group-hover:grayscale-0 transition-all">
+<img class="w-full h-full object-cover" data-alt="profile photo of a female strategy gamer in a tech-focused home office setup with blue ambient light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFJNZq-vnaH_o2NorXowIeQlnZlSALSYfkIGl8tzCFIcKN0ZVH0Nq5XVDI4xuqqWxF1oYnEtoPLfXeggTo-aKBGDYMFHuR0tZhU_IDKljGTYQkdY5arC5_wMrLvva9eSvLOV-XL_rVoUvjVZEZqPDTtxEKEvsXzaxK22E83mm-gFmM8vlk_q7BW_quMLtoLqmkhLjEUot5yUB-wEGZHagLpOAPrV5fMG1pDRs1os7QbRXEoKHXUiY3CAQoTaIL-HmhjXTdrrFly7jy"/>
+</div>
+<div>
+<p class="font-headline font-bold text-on-surface">KnightRider</p>
+<p class="font-body text-[10px] uppercase tracking-tighter text-on-surface-variant">Active 5m ago</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline font-bold text-on-surface tracking-wider">2612</p>
+<div class="flex items-center gap-1 justify-end">
+<span class="material-symbols-outlined text-[10px] text-error">arrow_drop_down</span>
+<span class="text-[10px] font-bold text-error font-headline uppercase">1 Spot</span>
+</div>
+</div>
+</div>
+<!-- Rank Item -->
+<div class="flex items-center justify-between p-4 rounded-xl bg-surface-container-low hover:bg-surface-container-high transition-all group">
+<div class="flex items-center gap-6">
+<span class="font-headline font-bold text-on-surface-variant w-6 text-center group-hover:text-primary transition-colors">6</span>
+<div class="w-10 h-10 rounded-lg overflow-hidden grayscale group-hover:grayscale-0 transition-all">
+<img class="w-full h-full object-cover" data-alt="abstract artistic profile silhouette with geometric light patterns reflecting off a dark surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9H3jRgfpbREZubByzd1C7uWjmbmmIrwt2qWpWP8-TOQLzSHqX9Tv2XCYawSLkapbUnZP-2Fgvil4RcYNdTOoddSAbPSl4vuqL5CTBDUOfj_nozXbUnurWMO_ffLEXjijlk6egubnmZWIDWSV6ECSPNRDEW4sTVZzIsyG6FnNAEsrQtziSlB_WdggUFrJVx5rOfpjaeX4V7P0FcPf4U90JpCNpOERoP5ot7G2BV8InTNRt5UrO1dzYkzOc1La-RA0pcoNxC2hu6RVQ"/>
+</div>
+<div>
+<p class="font-headline font-bold text-on-surface">BishopBlaze</p>
+<p class="font-body text-[10px] uppercase tracking-tighter text-on-surface-variant">Pro Member</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline font-bold text-on-surface tracking-wider">2598</p>
+<div class="flex items-center gap-1 justify-end">
+<span class="text-[10px] font-bold text-on-surface-variant font-headline uppercase">Steady</span>
+</div>
+</div>
+</div>
+<!-- Rank Item - YOU -->
+<div class="flex items-center justify-between p-4 rounded-xl bg-primary/10 border-l-4 border-primary group relative mt-8">
+<div class="absolute -left-12 top-1/2 -translate-y-1/2 hidden md:block">
+<span class="text-[10px] font-bold text-primary font-headline uppercase rotate-180 [writing-mode:vertical-lr]">Your Ranking</span>
+</div>
+<div class="flex items-center gap-6">
+<span class="font-headline font-bold text-primary w-6 text-center">42</span>
+<div class="w-10 h-10 rounded-lg overflow-hidden border border-primary/30">
+<img class="w-full h-full object-cover" data-alt="close-up portrait of a professional chess player with focused expression in a dimly lit tournament setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhDJL98PZRqTJ8xvk2YriQYz782IgPv7eQbKigOS9I5FTDPIyErxD09Rg_Tc7SvYRRTcVG4mALxZMmjmVez9agF7bZIMiWe4qorvu1Y64w0gyZmOwxfNoHc8IotxHL52BLhxr1MI0TLNHIJbodzsu7A52Sy0HCNKpe1ngcz2Zwt36MNq9tC5k6Udb-S7cMRnAiTOBckU0fxBZ2VydbTsKYHznJLUcLmshHHxH_FBN2teG8hfVk4JZ5WeS_GN3jU1ZKqq3kurfTuFSD"/>
+</div>
+<div>
+<p class="font-headline font-bold text-on-surface">AlphaStrategist <span class="text-[10px] text-primary ml-2 uppercase tracking-widest">(You)</span></p>
+<p class="font-body text-[10px] uppercase tracking-tighter text-primary/70">Top 5% Globally</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline font-bold text-on-surface tracking-wider">1850</p>
+<div class="flex items-center gap-1 justify-end">
+<span class="material-symbols-outlined text-[10px] text-primary">arrow_drop_up</span>
+<span class="text-[10px] font-bold text-primary font-headline uppercase">12 Spots</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar Shell -->
+<nav class="fixed bottom-0 left-0 w-full h-20 bg-[#151311] dark:bg-[#151311] border-t border-[#2c2a27]/15 flex justify-around items-center px-4 pb-safe shadow-[0_-10px_30px_rgba(0,0,0,0.5)] z-50">
+<a class="flex flex-col items-center justify-center text-[#c0c9be] opacity-60 px-3 py-1.5 hover:text-[#96d5a0] hover:opacity-100 transition-all active:scale-90 duration-150" href="index.html">
+<span class="material-symbols-outlined">home</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-tight">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#c0c9be] opacity-60 px-3 py-1.5 hover:text-[#96d5a0] hover:opacity-100 transition-all active:scale-90 duration-150" href="practice.html">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-tight">Practice</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#c0c9be] opacity-60 px-3 py-1.5 hover:text-[#96d5a0] hover:opacity-100 transition-all active:scale-90 duration-150" href="play_vs_bot.html">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-tight">Play</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#96d5a0] bg-[#1d1b19] rounded-xl px-3 py-1.5 hover:text-[#96d5a0] hover:opacity-100 transition-all active:scale-90 duration-150" href="leaderboard.html">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-tight">Ranks</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#c0c9be] opacity-60 px-3 py-1.5 hover:text-[#96d5a0] hover:opacity-100 transition-all active:scale-90 duration-150" href="profile.html">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Manrope'] text-[10px] font-medium tracking-tight">Profile</span>
+</a>
+</nav>
+</body></html>
